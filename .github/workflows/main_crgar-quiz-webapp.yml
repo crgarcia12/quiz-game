@@ -47,4 +47,4 @@ jobs:
         app-name: 'crgar-quiz-webapp'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_7d41ccc3c10c4169a0dc842bbc36e66d }}
-        images: 'crgarquizacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_384ae4e888d64ef6b28c9f85b8d76bb2 }}/quiz:${{ github.sha }}'
+        images: 'crgarquizacr.azurecr.io/quiz:${{ github.sha }}'
