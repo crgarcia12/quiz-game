@@ -26,12 +26,11 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
-    - name: Build and push container image to registry
-      uses: docker/build-push-action@v3
-      with:
-        push: true
-        tags: crgarquizacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_62eca5caceb143e39b0194985c0c713c }}/quiz:${{ github.sha }}
-        file: ./Dockerfile
+    - name: Build and push
+      run: |
+        cd source_code
+        docker build . -t crgarquizacr.azurecr.io/quiz:${{ github.sha }}
+        docker push crgarquizacr.azurecr.io/quiz:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
